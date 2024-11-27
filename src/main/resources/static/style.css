@@ -1,6 +1,76 @@
-body {
-    background-color: #888aa5;
-}
-p{
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+    background-color: #46438d;
 
 }
+p{
+    color: #ffffff;
+    font-family: arial;
+    align-items: center;
+    font-size: 2rem;
+}
+h1{
+    color: #ffffff;
+    font-family: arial;
+    align-items: center;
+    font-size: 3rem;
+}
+h2{
+    color: #7f7f98;
+    font-family: arial;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.countdown{
+    color: #ffffff;
+    font-family: arial;
+    align-items: center;
+    font-size: 8rem;
+}
+
+.container{
+    display: grid;
+    place-items: center;
+    height: 100%;
+}
+    .boks1{
+        text-align: center;
+        border: 0px dotted #ffffff;
+        background-color: transparent;
+        padding: 50px;
+
+    }
+
+    .button1{
+        background-color: transparent;
+        color: #ffffff;
+        border: solid 1px #ffffff;
+        padding: 20px;
+        transition: background-color 1s ease, transform 1s ease; /* Transition duration is set to 2 seconds */
+}
+    .button1:hover{
+        background-color: #646398;
+        color: #ffffff;
+        border: solid 1px #ffffff;
+        padding: 20px;
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+    .button1:active{
+        background-color: #ffffff;
+        color: #46438d;
+        border: solid 1px #ffffff;
+        padding: 20px;
+        cursor: pointer;
+        transform: scale(1.00);
+    }
+    .button2{
+        background-color: transparent;
+        color: #7f7f98;
+        border: solid 1px #7f7f98;
+        padding: 15px;
+        transition: background-color 1s ease, transform 1s ease; /* Transition duration is set to 2 seconds */
+    }
+
