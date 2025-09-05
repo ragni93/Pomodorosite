@@ -1,18 +1,32 @@
 
 //function to start Pomodoro-countdown
 $(document).ready( function() { //the code inside will run then the DOM is fully loaded
+
+    console.log("jQuery is working");
+
     $("#button").click(function () { //function for what will happen when id #button is clicked
         $(".boks1").load("countdown1.html", function () { //load countdown1.html in element with class boks1
             countDown1(); //beginn this function after countdown1.html is loaded
         });
     })
-})
+
+    // Restart countdown1-button:
+    $("#restartCountdown1").click(function () {
+        $(".boks1").load("countdown1.html", function () {
+            countDown1();
+        });
+    });
+
+
+
+
+}) //<-- slutt på document-ready
 
 
 //function for the countdown
-let countdownInterval;
 function countDown1(){
-    const intervall1= 7; //choose your starting time here, in minutes
+    let countdownInterval;
+    const intervall1= 0.1; //choose your starting time here, in minutes
     let time = intervall1 * 60; // Transform the minutes to seconds, dont change.
     const countdownEl = document.getElementById('countdown'); //place element in div-container
     clearInterval(countdownInterval); //clears any previous countdowns
@@ -36,10 +50,5 @@ function countDown1(){
 }
 
 
-// Restart countdown1-button:
-$("#restartCountdown1").click(function () {
-    $(".boks1").load("countdown1.html", function () {
-        countDown1();
-    });
-});
+
 
