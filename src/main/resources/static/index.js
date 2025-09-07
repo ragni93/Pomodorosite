@@ -1,53 +1,77 @@
 
-//function to start Pomodoro-countdown
-$(document).ready( function() { //the code inside will run then the DOM is fully loaded
+let countdownInterval; 
+let time = 0.1 * 60 //preferred working time
+let isWork = true; //which state are we in? work or pause?
 
-    console.log("jQuery is working");
+$(document).ready(function (){
 
-    $("#button").click(function () { //function for what will happen when id #button is clicked
-        $(".boks1").load("countdown1.html", function () { //load countdown1.html in element with class boks1
-            countDown1(); //beginn this function after countdown1.html is loaded
-        });
-    })
+    $("#status").text("Work!"); // sørger for at første session har riktig tekst
 
-    // Restart countdown1-button:
-    $("#restartCountdown1").click(function () {
-        $(".boks1").load("countdown1.html", function () {
-            countDown1();
-        });
+    
+    updateCountdownDisplay();
+
+    $("#startButton").click(function () { //startCountdown when user click at startButton
+        startCountdown();
+
     });
 
+    $("#pauseButton").click(function () { //startCOuntdown() when user click pauseButton
+        clearInterval(countdownInterval); // fryser nedtellingen
+    });
 
+    $("#resetButton").click(function () {
+        clearInterval(countdownInterval);
+        time = isWork ? 0.1 * 60 : 50,2 * 60 //isWork true or false? reset is dependent on this! 
+        updateCountdownDisplay(); //time has been updated, lets start all over
+    });
 
+});
 
-}) //<-- slutt på document-ready
+function startCountdown() {
+    clearInterval(countdownInterval);
+    countdownInterval=setInterval(updateCountdown, 1000);
+}
 
+function updateCountdown(){
+    time--;
 
-//function for the countdown
-function countDown1(){
-    let countdownInterval;
-    const intervall1= 0.1; //choose your starting time here, in minutes
-    let time = intervall1 * 60; // Transform the minutes to seconds, dont change.
-    const countdownEl = document.getElementById('countdown'); //place element in div-container
-    clearInterval(countdownInterval); //clears any previous countdowns
-    countdownInterval =setInterval(updateCountdown,1000); // run the updateCountdown-method every second!
-
-
-    function updateCountdown(){
-        const minutes = Math.floor(time / 60); // vi regner ut minuttene
-        let seconds = time % 60; //vi regner modulus av time, som gir det resterende når time deles på 60.
-
-        seconds = seconds < 10 ? '0' + seconds : seconds; //forkortet if-setning
-
-        countdownEl.innerHTML=`${minutes}:${seconds}`;
-        time--;
-
-        if(time < 0){
-            clearInterval(countdownInterval); //tømmer id-en "countdownInterval", dvs stopper tellingen
-            $(".boks1").load("startpause1.html"); //when time is below 0: starts the pause function into boks1 in index.html
-        }
+    if(time<0){ //times up? clear interval and switch to work/pause
+        clearInterval(countdownInterval); 
+        switchPhase(); 
+    } else { //still time?
+        updateCountdownDisplay(); //update the display
     }
 }
+
+function switchPhase(){
+    isWork=!isWork; //switches
+    if(isWork){
+        $("#status").text("Arbeid");
+        time=0.1*60;
+    } else {
+        $("#status").text("Pause");
+        time=0.2*60;
+    }
+    updateCountdownDisplay();
+    startCountdown(); 
+
+}
+
+function updateCountdownDisplay() {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    $("#countdown").text(`${minutes}:${seconds}`);
+}
+
+function pauseJingle(){
+    const pauseStart = new Audio(path/to/sound.mp3);
+}
+
+
+
+
+
 
 
 
