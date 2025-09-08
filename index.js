@@ -5,7 +5,7 @@ let isWork = true; //which state are we in? work or pause?
 
 $(document).ready(function (){
 
-    $("#status").text("Work!"); // sørger for at første session har riktig tekst
+    $("#status").text("Lets get started!"); // sørger for at første session har riktig tekst
     updateCountdownDisplay();
 
     $("#startButton").click(function () { //startCountdown when user click at startButton
