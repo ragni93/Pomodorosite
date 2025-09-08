@@ -1,6 +1,6 @@
 
 let countdownInterval; 
-let time = 0.1 * 60 //preferred working time
+let time = 0.1 * 60 //preferred working minutes multuplied with 60 to get 'time' in seconds
 let isWork = true; //which state are we in? work or pause?
 
 $(document).ready(function (){

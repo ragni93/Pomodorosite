@@ -53,6 +53,7 @@ h2{
         padding-top: 10px;
         padding-bottom: 10px;
         margin: 5px;
+        border-radius: 10px;
         transition: background-color 1s ease, transform 1s ease; /* Transition duration is set to 2 seconds */
 }
     .btn:hover{
