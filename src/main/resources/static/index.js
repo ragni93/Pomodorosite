@@ -6,8 +6,6 @@ let isWork = true; //which state are we in? work or pause?
 $(document).ready(function (){
 
     $("#status").text("Work!"); // sørger for at første session har riktig tekst
-
-    
     updateCountdownDisplay();
 
     $("#startButton").click(function () { //startCountdown when user click at startButton
@@ -51,6 +49,8 @@ function switchPhase(){
     } else {
         $("#status").text("Pause");
         time=0.2*60;
+        pauseJingle();
+        console.log("pausejingle spilles!")
     }
     updateCountdownDisplay();
     startCountdown(); 
@@ -65,7 +65,8 @@ function updateCountdownDisplay() {
 }
 
 function pauseJingle(){
-    const pauseStart = new Audio(path/to/sound.mp3);
+    const pauseStart = new Audio('sounds/pause.wav');
+    pauseStart.play();
 }
 
 
