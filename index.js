@@ -1,6 +1,6 @@
 
 let countdownInterval; 
-let time = 0.1 * 60 //preferred working minutes multuplied with 60 to get 'time' in seconds
+let time = 25 * 60 //preferred working minutes multuplied with 60 to get 'time' in seconds
 let isWork = true; //which state are we in? work or pause?
 
 $(document).ready(function (){
@@ -10,6 +10,7 @@ $(document).ready(function (){
 
     $("#startButton").click(function () { //startCountdown when user click at startButton
         startCountdown();
+        $("#status").text("Work..");
 
     });
 
@@ -19,7 +20,7 @@ $(document).ready(function (){
 
     $("#resetButton").click(function () {
         clearInterval(countdownInterval);
-        time = isWork ? 0.1 * 60 : 50,2 * 60 //isWork true or false? reset is dependent on this! 
+        time = isWork ? 25 * 60 : 5 * 60 //isWork true or false? reset is dependent on this! 
         updateCountdownDisplay(); //time has been updated, lets start all over
     });
 
@@ -44,11 +45,11 @@ function updateCountdown(){
 function switchPhase(){
     isWork=!isWork; //switches
     if(isWork){
-        $("#status").text("Arbeid");
-        time=0.1*60;
+        $("#status").text("Work..");
+        time=25*60;
     } else {
-        $("#status").text("Pause");
-        time=0.2*60;
+        $("#status").text("Pause!");
+        time=5*60;
         pauseJingle();
         console.log("pausejingle spilles!")
     }
